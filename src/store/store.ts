@@ -25,6 +25,9 @@ export class Store {
   subscribe(fn) {
     this.subscribers = [...this.subscribers, fn];
     this.notify();
+    return () => {
+      this.subscribers = this.subscribers.filter(func => func !== fn)
+    }
   }
 
   private reduce(state, action) {
