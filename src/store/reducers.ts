@@ -18,7 +18,7 @@ export function reducer(state = initialState, action: { type: string; payload: a
     }
     case fromActions.REMOVE_TODO: {
       const todo = action.payload;
-      const data = [...state.data].filter(item => item.label !== todo.label);
+      const data = state.data.filter(item => item.label !== todo.label);
       return {
         ...state,
         data
